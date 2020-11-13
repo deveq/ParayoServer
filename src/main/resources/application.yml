@@ -1,0 +1,22 @@
+spring:
+  # database에 사용될 속성 설정
+  datasource:
+    # url : Database 연결에 사용할 URL을 입력. 로컬 MySQL을 설치했기 때문에 127.0.0.1
+    url: jdbc:mysql://127.0.0.1:3306/parayo?useUnicode=true&characterEncoding=utf8&autoreconnect=true&useSSl=false
+    # db 연결에 사용할 사용자 아이디
+    username: parayo
+    # db 연결에 사용할 비번
+    password: parayopassword
+    # DML 스크립트를 실행할 때 사용할 사용자 아이디 username과 다르지 않다면 생략 가능
+    data-username: parayo
+    # DML 스크립트를 실행할 때 사용할 비번 userpassword와 다르지 않다면 생략 가능
+    data-password: parayopassword
+    driver-class-name: com.mysql.jdbc.Driver
+  # JPA의 설정
+  jpa:
+    # hibernate.ddl-auto : 서버가 실행될 때 자동으로 실행 될 데이터베이스 스키마에 대한 DDL 정책
+    # update는 테이블이 존재하지 않는다면 테이블을 생성하고, 스키마가 변경된다면 alter해줌.
+    # 서버가 실행될때마다 스키마가 업데이트 되는것은 위험요소이기도 하지만 (개발초기 && 혼자개발)이면 편리한 방법
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

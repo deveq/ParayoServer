@@ -1,0 +1,48 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
+
+    //스프링 사용하기 위한 플러그인
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+
+    //코틀린은 모든 클래스가 상속불가이므로 open을 일일이 달아줘야하는데,
+    //아래의 플러그인은 open키워드를 대신 달아주는 역할을 함
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.3.30'
+
+    //JPA에서 사용하는 엔티티 클래스들도 상속가능한 클래스여야 하고
+    //엔티티 클래스들은 기본생성자가 필요하므로 자동으로 해주는 플러그인
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.3.30'
+
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+//    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    implementation 'org.springframework.boot:spring-boot-data-jpa'
+//    runtimeOnly 'mysql:mysql-connector-java'
+
+
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
