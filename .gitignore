@@ -1,3 +1,5 @@
 # Project exclude paths
 /.gradle/
 /build/
+/src/main/resources/mychatting-80c61-firebase-adminsdk-wskta-a7f8d368c7.json
+/src/main/resources/mychatting-80c61-25e6fe90b4da.json
